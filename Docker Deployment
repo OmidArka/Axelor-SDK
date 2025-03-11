@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_DB: axelor
+      POSTGRES_USER: axelor
+      POSTGRES_PASSWORD: axelor_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  axelor:
+    image: axelor/aio:latest
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: axelor
+      DB_USER: axelor
+      DB_PASSWORD: axelor_password
+    ports:
+      - "8080:8080"
+    volumes:
+      - axelor_data:/var/lib/axelor
+
+volumes:
+  postgres_data:
+  axelor_data:
