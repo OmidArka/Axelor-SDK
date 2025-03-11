@@ -1,0 +1,16 @@
+-- نمونه داده‌های تستی برای Axelor
+-- ایجاد کاربران تستی
+INSERT INTO public.auth_user (id, name, login, email, password, active) VALUES
+(1, 'مدیر سیستم', 'admin', 'admin@example.com', 'hashed_password', true),
+(2, 'کاربر تستی', 'testuser', 'test@example.com', 'hashed_password', true);
+
+-- ایجاد پروژه‌های نمونه
+INSERT INTO public.project (id, name, description, status) VALUES
+(1, 'پروژه تستی 1', 'این یک پروژه نمونه است.', 'IN_PROGRESS'),
+(2, 'پروژه تستی 2', 'پروژه‌ای دیگر برای تست.', 'PLANNED');
+
+-- ایجاد وظایف نمونه
+INSERT INTO public.task (id, name, project_id, assigned_user_id, status) VALUES
+(1, 'تحلیل نیازمندی‌ها', 1, 1, 'TODO'),
+(2, 'طراحی پایگاه داده', 1, 2, 'IN_PROGRESS'),
+(3, 'تست نرم‌افزار', 2, 1, 'DONE');
